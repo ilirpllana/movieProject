@@ -1,0 +1,318 @@
+<!--
+One Page Mobile Application
+Created By Ritesh Maharjan
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AvengersDB App</title>
+    <!--jQuery-->
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <!--jQuery mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <!--jQuery mobile css-->
+    <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.css">
+    <!--jQuery validation lib-->
+    <script src="js/lib/jquery.validate.js"></script>
+    <!--our scripts-->
+    <script src="js/MyMoviesListDatabase.js"></script>
+    <script src="js/MyMoviesListDAL.js"></script>
+    <script src="js/MyMoviesListGlobal.js"></script>
+    <script src="js/MyMoviesListUtil.js"></script>
+    <script src="js/MyMoviesListFacade.js"></script>
+    <!--our stylesheet-->
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+</head>
+<body>
+<!--home page-->
+<div data-role="page" id="Home">
+    <header data-role="header" data-position="fixed">
+        <h1>Home</h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#Home" data-icon="home" data-theme="a" class="ui-btn-active ui-state-persist"
+                >Home</a></li>
+                <li><a href="#Add" data-icon="plus" data-theme="a">Add</a></li>
+                <li><a href="#Update" data-icon="grid" data-theme="a">Movie list</a></li>
+                <li><a href="#Profile" data-icon="gear" data-theme="a">Profile</a></li>
+                <li><a href="#Contact" data-icon="star" data-theme="a">Contact</a></li>
+            </ul>
+        </div>
+
+    </header>
+    <section data-role="content">
+        <h3>Random Upcoming Movies</h3>
+        <form>
+            <ul data-role="listview" class="ui-listview-inset">
+                <li>
+                    <p id="txtMoviesNameAdd1">Frozen</p>
+                    <p id="txtDirectedBy1">Ilir Pllana</p>
+                    <p id="releasedDate1">2019-12-30</p>
+                    <button type="button" id="btnAdd1" style="background-color: black; color: white">Add To Movie List
+                    </button>
+                </li>
+                <li>
+                    <p id="txtMoviesNameAdd2">I Feel Pretty</p>
+                    <p id="txtDirectedBy2">Marc Silverstein</p>
+                    <p id="releasedDate2">2018-04-26</p>
+                    <button type="button" id="btnAdd2" style="background-color: black; color: white">Add To Movie List
+                    </button>
+                </li>
+                <li>
+                    <p id="txtMoviesNameAdd3">Hotel Transylvania 3</p>
+                    <p id="txtDirectedBy3">Genndy Tartakovsky</p>
+                    <p id="releasedDate3">2018-09-21</p>
+                    <button type="button" id="btnAdd3" style="background-color: black; color: white">Add To Movie List
+                    </button>
+                </li>
+            </ul>
+        </form>
+
+    </section>
+    <footer data-role="footer" data-position="fixed">
+        <h4>&copy; Ilir Pllana</h4>
+    </footer>
+
+
+</div>
+
+<!--Add page-->
+<div data-role="page" id="Add">
+    <header data-role="header" data-position="fixed">
+        <h1>Add movies</h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#Home" data-icon="home" data-theme="a"
+                >Home</a></li>
+                <li><a href="#Add" data-icon="plus" data-theme="a" class="ui-btn-active
+                         ui-state-persist">Add</a>
+                </li>
+                <li><a href="#Update" data-icon="grid" data-theme="a">Movie list</a></li>
+                <li><a href="#Profile" data-icon="gear" data-theme="a">Profile</a></li>
+                <li><a href="#Contact" data-icon="star" data-theme="a">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <section data-role="content">
+        <div id="divMain">
+            <h2 align="center">Add a movie</h2>
+            <form id="frmAddMovies" name="frmAddMovies" data-ajax="false">
+                <label for="txtMoviesNameAdd">Movie Name </label>
+                <input type="text" id="txtMoviesNameAdd" name="txtMoviesNameAdd"
+                       class="required" data-theme="a" data-clear-btn="true" placeholder="Enter the movie name">
+
+                <label for="txtDirectedBy">Directed By</label>
+                <input type="text" id="txtDirectedBy" name="txtDirectedBy"
+                       class="required" data-theme="a" data-clear-btn="true" placeholder="Directed By">
+
+                <label for="releasedDate">Released Date</label>
+                <input type="date" id="releasedDate" name="releasedDate"
+                       class="required" data-theme="a" data-clear-btn="true" placeholder="Released Date">
+
+                <button type="button" id="btnAdd" name="btnAdd" data-icon="plus" data-theme="b">
+                    Add
+                </button>
+            </form>
+        </div>
+
+    </section>
+    <footer data-role="footer" data-position="fixed">
+        <h4>&copy; Ilir Pllana</h4>
+    </footer>
+
+
+</div>
+
+<!--UpdateDetail page-->
+<div data-role="page" id="Update">
+    <header data-role="header" data-position="fixed">
+        <h1>MoviesList</h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#Home" data-icon="home" data-theme="a"
+                >Home</a></li>
+                <li><a href="#Add" data-icon="plus" data-theme="a">Add</a></li>
+                <li><a href="#Update" data-icon="grid" data-theme="a"
+                       class="ui-btn-active ui-state-persist">Movie list</a></li>
+                <li><a href="#Profile" data-icon="gear" data-theme="a">Profile</a></li>
+                <li><a href="#Contact" data-icon="star" data-theme="a">Contact</a></li>
+            </ul>
+        </div>
+
+    </header>
+    <section data-role="content">
+        <h2 align="center">Movies list</h2>
+        <ul id="lvAll" data-role="listview" class="ui-listview-inset">
+            <li>
+                <a href="#updateDetail" data-theme="a">
+                    <img src="img/SR.jpg" width="100%" height="100%" atl="Shawshank Redemption">
+                    <h3>Shawshank Redemption</h3>
+                    <p>Frank Darabont</p>
+                </a>
+            </li>
+            <li>
+                <a href="#updateDetail" data-theme="a">
+                    <img src="img/titanic.jpg" width="100%" height="100%" atl="Titanic">
+                    <h3>Titanic</h3>
+                    <p>James Cameron</p>
+                </a>
+            </li>
+
+        </ul>
+
+    </section>
+    <footer data-role="footer" data-position="fixed">
+        <h4>&copy; Ilir Pllana</h4>
+    </footer>
+
+
+</div>
+
+<!--Profile page-->
+<div data-role="page" id="Profile">
+    <header data-role="header" data-position="fixed">
+        <h1>Profile</h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#Home" data-icon="home" data-theme="a"
+                >Home</a></li>
+                <li><a href="#Add" data-icon="plus" data-theme="a">Add</a></li>
+                <li><a href="#Update" data-icon="grid" data-theme="a">Movie list</a></li>
+                <li><a href="#Profile" data-icon="gear" data-theme="a"
+                       class="ui-btn-active ui-state-persist">Profile</a></li>
+                <li><a href="#Contact" data-icon="star" data-theme="a">Contact</a></li>
+            </ul>
+        </div>
+
+    </header>
+    <section data-role="content">
+
+        <div id="divProfile">
+            <h2 align="center">Sign Up</h2>
+            <form id="frmProfile" name="frmProfile" data-ajax="false">
+
+                <input type="text" id="txtUsername" name="txtUsername"
+                       class="required" data-theme="a" data-clear-btn="true" placeholder="Enter the Username">
+                <input type="password" id="txtPassword" name="txtPassword" class="required"
+                       data-clear-btn="true" placeholder="Enter Password">
+                <input type="password" id="txtVerifyPassword" name="txtVerifyPassword" class="required"
+                       data-clear-btn="true" placeholder="Verify Password">
+
+                <input type="text" id="txtEmail" name="txtEmail" class="required"
+                       data-clear-btn="true" placeholder="Enter your Email address">
+
+                <button type="button" id="btnValidate" name="btnValidate" data-icon="check" data-theme="b">
+                    Sign Up
+                </button>
+            </form>
+        </div>
+
+
+    </section>
+    <footer data-role="footer" data-position="fixed">
+        <h4>&copy; Ilir Pllana</h4>
+    </footer>
+
+</div>
+<!--contact page-->
+<div data-role="page" id="Contact">
+    <header data-role="header" data-position="fixed">
+        <h1>Contact</h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#Home" data-icon="home" data-theme="a"
+                >Home</a></li>
+                <li><a href="#Add" data-icon="plus" data-theme="a">Add</a></li>
+                <li><a href="#Update" data-icon="grid" data-theme="a">Movie list</a></li>
+                <li><a href="#Profile" data-icon="gear" data-theme="a">Profile</a></li>
+                <li><a href="#Contact" data-icon="star" data-theme="a"
+                       class="ui-btn-active ui-state-persist">Contact</a></li>
+            </ul>
+        </div>
+
+    </header>
+    <section data-role="content">
+        <h2>About Our App</h2>
+        <p>Our app is created to keep the list of movies that you have watched and plan to watch. Sometimes you want to
+            re-watch some movies but forget the name at that time you can search for it in the list. Some new movies
+            might be released and you want to add it but you didn't have enough time and plan to watch later but you
+            forget. Bookmarking such movies can help you remember which movie you wanted to watch.</p>
+        <h2>Contact us</h2>
+        <h3>Bookmark app is created and updated by Ilir Pllana and Ritesh Maharjan</h3>
+        <p>
+            <a href="tel:5197814936" data-role="button" data-icon="plus">Call:519-781-4936</a>
+            <a href="mailto:rmaharjan9091@conestogac.on.ca" data-role="button" data-icon="plus">Ipllana7382@conestogac.on.ca</a>
+        </p>
+    </section>
+    <footer data-role="footer" data-position="fixed">
+        <h4>&copy; Ilir Pllana</h4>
+    </footer>
+
+
+</div>
+<!--Update page-->
+<div data-role="page" id="updateDetail">
+    <header data-role="header" data-position="fixed">
+        <h1>Update</h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#Home" data-icon="home" data-theme="a"
+                >Home</a></li>
+                <li><a href="#Add" data-icon="plus" data-theme="a">Add</a></li>
+                <li><a href="#Update" data-icon="grid" data-theme="a"
+                       class="ui-btn-active ui-state-persist">Movie list</a></li>
+                <li><a href="#Profile" data-icon="gear" data-theme="a">Profile</a></li>
+                <li><a href="#Contact" data-icon="star" data-theme="a">Contact</a></li>
+            </ul>
+        </div>
+
+    </header>
+    <section data-role="content">
+        <div id="divMainDetail">
+            <h2 align="center">Update your movie list</h2>
+            <form id="frmUpdateBookmark" name="frmUpdateBookmark" data-ajax="false">
+
+                <label for="txtMoviesNameUpdate">Movie Name </label>
+                <input type="text" id="txtMoviesNameUpdate" name="txtMoviesNameAdd"
+                       class="required" data-theme="a" data-clear-btn="true" placeholder="Enter the movie name">
+
+                <label for="txtDirectedByUpdate">Movie Name </label>
+                <input type="text" id="txtDirectedByUpdate" name="txtDirectedByUpdate"
+                       class="required" data-theme="a" data-clear-btn="true" placeholder="Directed By">
+
+                <label for="releasedDateUpdate">Released Date</label>
+                <input type="date" id="releasedDateUpdate" name="releasedDateUpdate"
+                       class="required" data-theme="a" data-clear-btn="true" placeholder="Released Date">
+                <div data-role="controlgroup" data-type="horizontal" align="center"><a data-role="button"
+                                                                                       data-icon="back"
+                                                                                       data-rel="back">
+                    Go to previous
+                </a>
+                    <button type="button" id="btnShowAll" name="btnShowAll" data-icon="grid" data-theme="b">
+                        Show All
+                    </button>
+                    <button type="button" id="btnUpdate" name="btnUpdate" data-icon="check" data-theme="b">
+                        Update
+                    </button>
+                    <button type="button" id="btnDelete" name="btnDelete" data-icon="minus" data-theme="b">
+                        Delete
+                    </button>
+                </div>
+
+
+            </form>
+        </div>
+
+    </section>
+    <footer data-role="footer" data-position="fixed">
+        <h4>&copy; Ritesh Maharjan</h4>
+    </footer>
+
+
+</div>
+
+
+</body>
+</html>
